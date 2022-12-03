@@ -2,7 +2,7 @@
 	"repoName": "fpp-ifttt-webhooks",
 	"name": "IFTTT Webhooks",
 	"author": "Joe Harrison (joeharrison714)",
-	"description": "This template plugin is designed to make it easier for plugin authors to create new FPP Plugins.  You can manually clone the git repository or install the Template Plugin and then go to the plugin's config page and use the form to copy the template into a new plugin directory.",
+	"description": "This plugin allows you to trigger an IFTTT action from FPP. For example, trigger an action on SmartThings, Hubitat, Wyze device, etc.",
 	"homeURL": "https://github.com/joeharrison714/fpp-ifttt-webhooks-plugin",
 	"srcURL": "https://github.com/joeharrison714/fpp-ifttt-webhooks-plugin.git",
 	"bugURL": "https://github.com/joeharrison714/fpp-ifttt-webhooks-plugin/issues",
