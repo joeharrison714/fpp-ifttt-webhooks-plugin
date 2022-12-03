@@ -1,0 +1,16 @@
+[
+    { "name": "IFTTT Webhook Trigger",
+      "script": "execute.sh",
+      "args": [
+        {
+            "allowBlanks" : false,
+            "description" : "Event Name",
+            "name" : "event",
+            "optional" : false,
+            "type" : "string",
+            "contentListUrl": null
+        }
+      ]
+    }
+]
+    

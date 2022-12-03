@@ -1,0 +1,26 @@
+{
+	"repoName": "fpp-ifttt-webhooks",
+	"name": "IFTTT Webhooks",
+	"author": "Joe Harrison (joeharrison714)",
+	"description": "This template plugin is designed to make it easier for plugin authors to create new FPP Plugins.  You can manually clone the git repository or install the Template Plugin and then go to the plugin's config page and use the form to copy the template into a new plugin directory.",
+	"homeURL": "https://github.com/joeharrison714/fpp-ifttt-webhooks-plugin",
+	"srcURL": "https://github.com/joeharrison714/fpp-ifttt-webhooks-plugin.git",
+	"bugURL": "https://github.com/joeharrison714/fpp-ifttt-webhooks-plugin/issues",
+	"allowUpdates": 1,
+	"versions": [
+		{
+			"minFPPVersion": "5.0",
+			"maxFPPVersion": "0",
+			"branch": "master",
+			"sha": "",
+			"dependencies": {
+			    "plugins": [
+				],
+			    "packages": [
+				],
+				"scripts": [
+				]
+			}
+		}
+	]
+}

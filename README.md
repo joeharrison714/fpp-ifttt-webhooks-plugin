@@ -1,1 +1,3 @@
-# fpp-ifttt-webhooks-plugin
+# fpp-plugin-Template
+Template plugin for FPP Plugin developers
+
