@@ -8,7 +8,7 @@ logEntry( json_encode($payloads));
 
 $arr = [];
 foreach($payloads as $item) {
-    $name = $item->name;
+    $name = $item['name'];
     $arr[] = $name;
 }
 
