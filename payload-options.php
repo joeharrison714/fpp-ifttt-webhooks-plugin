@@ -12,6 +12,9 @@ foreach($payloads as $item) {
     $arr[] = $name;
 }
 
+logEntry( json_encode($arr));
+
+
 header('Content-type: application/json');
 echo json_encode($arr);
 

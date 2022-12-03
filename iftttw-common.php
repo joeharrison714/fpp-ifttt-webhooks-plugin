@@ -15,16 +15,16 @@ if (file_exists($pluginConfigFile)) {
 function getPayloadOptions(){
     $payloadArr = array (
         array(
-            "name" => "None",
-            "id" => "0"
+            "id" => "0", 
+            "name" => "None"
         ),
         array(
-            "name" => "FPPD Status",
-            "id" => "1"
+            "id" => "1", 
+            "name" => "FPPD Status"
         ),
         array(
+            "id" => "2",
             "name" => "System Status",
-            "id" => "2"
         )
     );
     return $payloadArr;
