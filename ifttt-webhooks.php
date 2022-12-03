@@ -40,7 +40,7 @@ if (strlen($pluginSettings['ifttt_key']) > 0)
 <td>
 <?
 //function PrintSettingTextSaved($setting, $restart = 1, $reboot = 0, $maxlength = 32, $size = 32, $pluginName = "", $defaultValue = "", $callbackName = "", $changedFunction = "", $inputType = "text", $sData = Array())
-	PrintSettingTextSaved("ifttt_key", $restart = 0, $reboot = 0, $maxlength = 50, $size = 50, $pluginName = $pluginName, $defaultValue = "");
+	PrintSettingTextSaved("ifttt_key", $restart = 0, $reboot = 0, $maxlength = 50, $size = 50, $pluginName = $pluginName, $defaultValue = "", $changedFunction = "keyChanged");
 ?>
 </td>
 </tr>
@@ -52,11 +52,49 @@ if (strlen($pluginSettings['ifttt_key']) > 0)
 
 if ($isConfigured){
 ?>
-<!--p style="font-size: 16pt; font-weight: bold;">SmartThings commands should now be available throughout FPP. If they are not, try restarting FPPD.</p-->
+<p style="font-size: 16pt; font-weight: bold;">IFTTT Webhook Trigger command should now be available throughout FPP. If it is not, try restarting FPPD.</p>
 <h3>Test</h3>
+
+<div>
+<table cellspacing="5">
+
+
+<tbody>
+    <tr>
+	<th style="text-align: left">Event Name</th>
+<td>
+<input type="text" id="test_event_name" maxlength="50" size="50" value="lead_in">
+</td>
+</tr>
+
+<tr>
+    <td>
+        <button onclick="testButton();">Send Test Event</button>
+    </td>
+</tr>
+
+</tbody></table>
+</div>
+
 <?
 }
 ?>
+
+<script type="text/javascript">
+function keyChanged(){
+	location.reload(true);
+}
+function testButton(){
+    ten = $('#test_event_name').val();
+    alert(ten);
+}
+function testExecute(name){
+	url = '/api/command/' + encodeURIComponent('IFTTT Webhook Trigger') + '/' + encodeURIComponent(name);
+	$.get( url, function( data ) {
+		// no op
+	});
+}
+</script>
 
 
 </body>
