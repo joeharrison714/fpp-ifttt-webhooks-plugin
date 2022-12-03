@@ -47,6 +47,9 @@ if (strlen($pluginSettings['ifttt_key']) > 0)
 
 </table>
 
+<br />
+<br />
+<hr />
 
 <?
 

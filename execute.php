@@ -10,6 +10,10 @@ if (strlen($eventName) == 0){
 	throw new Exception('No event specified.');
 }
 
+if (strlen($payload) == 0){
+	throw new Exception('No payload specified.');
+}
+
 // if (strlen($name) == 0){
 // 	throw new Exception('No name specified.');
 // }

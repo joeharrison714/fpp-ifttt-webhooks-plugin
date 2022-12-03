@@ -7,8 +7,15 @@
             "description" : "Event Name",
             "name" : "event",
             "optional" : false,
+            "type" : "string"
+        },
+        {
+            "allowBlanks" : false,
+            "description" : "Include Payload",
+            "name" : "payload",
+            "optional" : false,
             "type" : "string",
-            "contentListUrl": null
+            "contentListUrl": "/plugin.php?plugin=fpp-ifttt-webhooks&page=payload-options.php&nopage=1"
         }
       ]
     }
