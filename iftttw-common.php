@@ -1,4 +1,5 @@
 <?php
+$skipJSsettings=true;
 include_once "/opt/fpp/www/config.php";
 
 $pluginName = basename(dirname(__FILE__));

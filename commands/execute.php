@@ -2,7 +2,7 @@
 <?php
 $skipJSsettings=true;
 include_once "/opt/fpp/www/config.php";
-// include_once "/home/fpp/media/plugins/fpp-ifttt-webhooks/iftttw-common.php";
+include_once "/home/fpp/media/plugins/fpp-ifttt-webhooks/iftttw-common.php";
 
 $eventName = $argv[1];
 $payload = $argv[2];
