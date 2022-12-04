@@ -43,9 +43,9 @@ if ($isConfigured){
 		$payloadData = getPayload($payloadUrl);
 	}
 
-	logEntry( "Payload Data: " . json_encode($payloadData));
+	logEntry( "Payload Data: " . $payloadData);
 
-	callEndpoint($event, $iftttKey, $payloadData);
+	callEndpoint($eventName, $iftttKey, $payloadData);
 }
 else{
 	logEntry("Skipping executing due to plugin not being configured");
@@ -53,25 +53,34 @@ else{
 
 function callEndpoint($event, $iftttKey, $payloadData){
 	$url = "https://maker.ifttt.com/trigger/".$event."/json/with/key/". $iftttKey;
-	$data = $payloadData;
+	logEntry( "Webhook URL: " . $url);
+
 	$options = array(
-	  'http' => array(
-		'method'  => 'POST',
-		'content' => json_encode( $data ),
-		'header'=>  "Content-Type: application/json\r\n"
-		)
-	);
+        'http' => array(
+        'method'  => 'GET'
+        )
+    );
+
+	if (strlen($payloadData) != 0){
+		$options = array(
+		'http' => array(
+			'method'  => 'POST',
+			'content' => $payloadData,
+			'header'=>  "Content-Type: application/json\r\n"
+			)
+		);
+	}
 	$context = stream_context_create( $options );
 	$result = file_get_contents( $url, false, $context );
-	$response = json_decode( $result );
+	$response = $result;
 	$response_code = $http_response_header[0];
 	logEntry( "Webhook Response Code: " . $response_code);
-	logEntry( "Webhook Response: " . json_encode($response));
+	logEntry( "Webhook Response: " . $response);
 }
 
 function getPayload($path) {
     $result=file_get_contents("http://127.0.0.1".$path);
-    return json_decode( $result );
+    return $result;
 }
 
 ?>
