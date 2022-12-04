@@ -55,7 +55,6 @@ if (strlen($pluginSettings['ifttt_key']) > 0)
 
 if ($isConfigured){
 ?>
-<p style="font-size: 16pt; font-weight: bold;">IFTTT Webhook Trigger command should now be available throughout FPP. If it is not, try restarting FPPD.</p>
 <h3>Send Test Event</h3>
 
 <div>
