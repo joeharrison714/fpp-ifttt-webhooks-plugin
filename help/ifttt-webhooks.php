@@ -5,7 +5,7 @@ This plugin allows you to send a webhook event to IFTTT which you can use as a t
 
 <h2>To setup:</h2>
 <ol>
-    <li>Register/Login to IFTTT and visit this page: <a href="https://ifttt.com/maker_webhooks">https://ifttt.com/maker_webhooks</a> and click the Connect button if you've never used the webhook integration before.<br /><strong>NOTE: </strong>If you are signing up for IFTTT for the first time, it may try to force you to sign up for a pro trial. Once you verify you email address, it should bypass this and let you use the free version.</li>
+    <li>Register/Login to IFTTT and visit this page: <a href="https://ifttt.com/maker_webhooks" target="_blank">https://ifttt.com/maker_webhooks</a> and click the Connect button if you've never used the webhook integration before.<br /><strong>NOTE: </strong>If you are signing up for IFTTT for the first time, it may try to force you to sign up for a pro trial. Once you verify you email address, it should bypass this and let you use the free version.</li>
     <li>On that same link above, click the Documentation link to obtain your webhook key. Enter the key into the plugin settings.</li>
     <li>On that same link above, click the Connect button to create a new applet.</li>
     <li>For the "If This" section of the applet, click Add and search for Webhooks.</li>
