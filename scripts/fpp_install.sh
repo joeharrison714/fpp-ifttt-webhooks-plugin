@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # fpp-ifttt-webhooks install script
 
