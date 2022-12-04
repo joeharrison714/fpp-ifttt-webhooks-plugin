@@ -2,4 +2,16 @@
 
 echo "Running fpp-ifttt-webhooks install script"
 
-#sudo chmod 755 /home/fpp/media/plugins/fpp-ifttt-webhooks/commands/execute.sh
+#!/bin/bash
+
+# Mark to reboot
+BASEDIR=$(dirname $0)
+cd $BASEDIR
+cd ..
+make "SRCDIR=${SRCDIR}"
+
+
+. ${FPPDIR}/scripts/common
+setSetting rebootFlag 1
+
+#fpp_install
