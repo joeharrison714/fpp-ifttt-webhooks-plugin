@@ -43,7 +43,7 @@ if ($isConfigured){
 		$payloadData = getPayload($payloadUrl);
 	}
 
-	logEntry( "Payload Data: " . $payloadData);
+	logEntry( "Payload Data Length: " . strlen($payloadData));
 
 	callEndpoint($eventName, $iftttKey, $payloadData);
 }

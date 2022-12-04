@@ -71,6 +71,15 @@ if ($isConfigured){
 </tr>
 
 <tr>
+	<th style="text-align: left">Payload</th>
+<td>
+<select id="test_event_payload" data-contentlisturl="/plugin.php?plugin=fpp-ifttt-webhooks&amp;page=payload-options.php&amp;nopage=1">
+
+</select>
+</td>
+</tr>
+
+<tr>
     <td>
         <button onclick="testButton();">Send Test Event</button>
     </td>
