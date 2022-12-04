@@ -2,8 +2,6 @@
 
 echo "Running fpp-ifttt-webhooks install script"
 
-#!/bin/bash
-
 # Mark to reboot
 BASEDIR=$(dirname $0)
 cd $BASEDIR
