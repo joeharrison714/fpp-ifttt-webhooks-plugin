@@ -105,10 +105,10 @@ function keyChanged(){
 function testButton(){
     ten = $('#test_event_name').val();
     tep = $('#test_event_payload').val();
-    alert(ten + ' ' + tep);
+    testExecute(ten, tep);
 }
-function testExecute(name){
-	url = '/api/command/' + encodeURIComponent('IFTTT Webhook Trigger') + '/' + encodeURIComponent(name);
+function testExecute(name, po){
+	url = '/api/command/' + encodeURIComponent('IFTTT Webhook Trigger') + '/' + encodeURIComponent(name) + '/' + encodeURIComponent(po);
 	$.get( url, function( data ) {
 		// no op
 	});
