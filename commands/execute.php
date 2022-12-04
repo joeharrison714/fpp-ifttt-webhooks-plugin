@@ -52,7 +52,7 @@ else{
 }
 
 function callEndpoint($event, $iftttKey, $payloadData){
-	$url = $baseUrl . "https://maker.ifttt.com/trigger/".$event."/json/with/key/". $iftttKey;
+	$url = "https://maker.ifttt.com/trigger/".$event."/json/with/key/". $iftttKey;
 	$data = $payloadData;
 	$options = array(
 	  'http' => array(
@@ -64,6 +64,8 @@ function callEndpoint($event, $iftttKey, $payloadData){
 	$context = stream_context_create( $options );
 	$result = file_get_contents( $url, false, $context );
 	$response = json_decode( $result );
+	$response_code = $http_response_header[0];
+	logEntry( "Webhook Response Code: " . $response_code);
 	logEntry( "Webhook Response: " . json_encode($response));
 }
 
