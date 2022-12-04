@@ -78,7 +78,7 @@ if ($isConfigured){
 		$payloads = getPayloadOptions();
 		foreach($payloads as $item) {
 			$name = $item['name'];
-			echo '<option value="' . $name . '">' . $name . '</option>'
+			echo '<option value="' . $name . '">' . $name . '</option>';
 		}
 	?>
 </select>
