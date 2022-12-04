@@ -45,7 +45,7 @@ if ($isConfigured){
 
 	logEntry( "Payload Data: " . json_encode($payloadData));
 
-	callEndpoint($event, $iftttKey, $payloadData)
+	callEndpoint($event, $iftttKey, $payloadData);
 }
 else{
 	logEntry("Skipping executing due to plugin not being configured");
@@ -53,7 +53,7 @@ else{
 
 function callEndpoint($event, $iftttKey, $payloadData){
 	$url = $baseUrl . "https://maker.ifttt.com/trigger/".$event."/json/with/key/". $iftttKey;
-	$data = $payloadData
+	$data = $payloadData;
 	$options = array(
 	  'http' => array(
 		'method'  => 'POST',
