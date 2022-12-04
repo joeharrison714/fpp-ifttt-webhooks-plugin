@@ -73,8 +73,14 @@ if ($isConfigured){
 <tr>
 	<th style="text-align: left">Payload</th>
 <td>
-<select id="test_event_payload" data-contentlisturl="/plugin.php?plugin=fpp-ifttt-webhooks&amp;page=payload-options.php&amp;nopage=1">
-
+<select id="test_event_payload">
+	<?
+		$payloads = getPayloadOptions();
+		foreach($payloads as $item) {
+			$name = $item['name'];
+			echo '<option value="' . $name . '">' . $name . '</option>'
+		}
+	?>
 </select>
 </td>
 </tr>
@@ -98,7 +104,8 @@ function keyChanged(){
 }
 function testButton(){
     ten = $('#test_event_name').val();
-    alert(ten);
+    tep = $('#test_event_payload').val();
+    alert(ten + ' ' + tep);
 }
 function testExecute(name){
 	url = '/api/command/' + encodeURIComponent('IFTTT Webhook Trigger') + '/' + encodeURIComponent(name);
