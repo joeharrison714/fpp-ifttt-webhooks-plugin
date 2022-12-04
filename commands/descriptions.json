@@ -1,6 +1,6 @@
 [
     { "name": "IFTTT Webhook Trigger",
-      "script": "execute.sh",
+      "script": "execute.php",
       "args": [
         {
             "allowBlanks" : false,
