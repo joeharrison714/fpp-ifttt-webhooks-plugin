@@ -1,6 +1,7 @@
 #!/usr/bin/env php
 <?php
-// include_once "/opt/fpp/www/config.php";
+$skipJSsettings=true;
+include_once "/opt/fpp/www/config.php";
 // include_once "/home/fpp/media/plugins/fpp-ifttt-webhooks/iftttw-common.php";
 
 $eventName = $argv[1];
