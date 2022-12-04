@@ -110,7 +110,7 @@ function testButton(){
 function testExecute(name, po){
 	url = '/api/command/' + encodeURIComponent('IFTTT Webhook Trigger') + '/' + encodeURIComponent(name) + '/' + encodeURIComponent(po);
 	$.get( url, function( data ) {
-		// no op
+		alert('Event fired. Check execute log for details.');
 	});
 }
 </script>
