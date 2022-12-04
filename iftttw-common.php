@@ -17,15 +17,18 @@ function getPayloadOptions(){
     $payloadArr = array (
         array(
             "id" => "0", 
-            "name" => "None"
+            "name" => "None",
+            "path" => ""
         ),
         array(
             "id" => "1", 
-            "name" => "FPPD Status"
+            "name" => "FPPD Status",
+            "path" => "/api/fppd/status"
         ),
         array(
             "id" => "2",
             "name" => "System Status",
+            "path" => "/api/system/status"
         )
     );
     return $payloadArr;

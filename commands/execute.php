@@ -27,10 +27,32 @@ if (strlen($pluginSettings['ifttt_key']) > 0)
 
 if ($isConfigured){
 	$payloads = getPayloadOptions();
+
+	$payloadUrl = "";
 	
+	foreach($payloads as $item) {
+		$name = $item['name'];
+		if ($name == $payload){
+			$payloadUrl = $item['path'];
+			break;
+		}
+	}
+
+	$payloadData = "";
+	if (strlen($payloadUrl) != 0){
+		$payloadData = getPayload($payloadUrl);
+	}
+
+	logEntry( "Payload Data: " . $payloadData);
+
 }
 else{
 	logEntry("Skipping executing due to plugin not being configured");
+}
+
+function getPayload($path) {
+    $result=file_get_contents("http://127.0.0.1".$path);
+    return json_decode( $result );
 }
 
 ?>
