@@ -2,7 +2,7 @@
 	"repoName": "fpp-ifttt-webhooks",
 	"name": "IFTTT Webhooks",
 	"author": "Joe Harrison (joeharrison714)",
-	"description": "This plugin allows you to trigger an IFTTT action from FPP. For example, trigger an action on SmartThings, Hubitat, Wyze device, etc.",
+	"description": "This plugin allows you to trigger an IFTTT action from FPP. For example, trigger an action on SmartThings, Hubitat, Wyze device, Kasa, Hue, Twitter, etc.",
 	"homeURL": "https://github.com/joeharrison714/fpp-ifttt-webhooks-plugin",
 	"srcURL": "https://github.com/joeharrison714/fpp-ifttt-webhooks-plugin.git",
 	"bugURL": "https://github.com/joeharrison714/fpp-ifttt-webhooks-plugin/issues",
