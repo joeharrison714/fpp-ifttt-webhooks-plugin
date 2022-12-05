@@ -1,6 +1,10 @@
 # IFTTT Webhooks Plugin for FPP
 This plugin allows you to send a webhook event to IFTTT which you can use as a trigger for anything that IFTTT can connect to, like SmartThings, Hubitat, Wyze, Kasa, Hue, Twitter, etc.
 
+## Installation
+On the FPP Plugins page, enter the following URL:
+```https://raw.githubusercontent.com/joeharrison714/fpp-ifttt-webhooks-plugin/master/pluginInfo.json```
+
 ## Setup
 1. Register/Login to IFTTT and visit this page: <a href="https://ifttt.com/maker_webhooks" target="_blank">https://ifttt.com/maker_webhooks</a> and click the Connect button if you've never used the webhook integration before.<br /><strong>NOTE: </strong>If you are signing up for IFTTT for the first time, it may try to force you to sign up for a pro trial. Once you verify you email address, it should bypass this and let you use the free version.
 1. On that same link above, click the Documentation link to obtain your webhook key. Enter the key into the plugin settings.
