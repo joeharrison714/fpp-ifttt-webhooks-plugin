@@ -3,25 +3,29 @@ $skipJSsettings=true;
 include_once "/opt/fpp/www/config.php";
 
 $pluginName = basename(dirname(__FILE__));
-$pluginPath = $settings['pluginDirectory']."/".$pluginName."/"; 
+$pluginPath = $settings['pluginDirectory']."/".$pluginName."/";
 
-$logFile = $settings['logDirectory']."/".$pluginName."-execute.log";
+// FPP rotates plugin-*.log files and shows them in its log viewer.
+$logFile = $settings['logDirectory']."/plugin-".$pluginName.".log";
 
 $pluginConfigFile = $settings['configDirectory'] . "/plugin." .$pluginName;
 
 if (file_exists($pluginConfigFile)) {
 	$pluginSettings = parse_ini_file($pluginConfigFile);
 }
+if (!isset($pluginSettings) || !is_array($pluginSettings)) {
+	$pluginSettings = array();
+}
 
 function getPayloadOptions(){
     $payloadArr = array (
         array(
-            "id" => "0", 
+            "id" => "0",
             "name" => "None",
             "path" => ""
         ),
         array(
-            "id" => "1", 
+            "id" => "1",
             "name" => "FPPD Status",
             "path" => "/api/fppd/status"
         ),
@@ -35,14 +39,10 @@ function getPayloadOptions(){
 }
 
 function logEntry($data) {
+	global $logFile;
 
-	global $logFile,$myPid;
-
-	$data = $_SERVER['PHP_SELF']." : [".$myPid."] ".$data;
-	
-	$logWrite= fopen($logFile, "a") or die("Unable to open file!");
-	fwrite($logWrite, date('Y-m-d h:i:s A',time()).": ".$data."\n");
-	fclose($logWrite);
+	$line = date('Y-m-d h:i:s A') . ": " . basename($_SERVER['PHP_SELF']) . " : [" . getmypid() . "] " . $data . "\n";
+	@file_put_contents($logFile, $line, FILE_APPEND | LOCK_EX);
 }
 
 ?>

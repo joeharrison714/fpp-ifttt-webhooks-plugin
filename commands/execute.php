@@ -2,34 +2,30 @@
 <?php
 $skipJSsettings=true;
 include_once "/opt/fpp/www/config.php";
-include_once "/home/fpp/media/plugins/fpp-ifttt-webhooks/iftttw-common.php";
+include_once __DIR__ . "/../iftttw-common.php";
 
-$eventName = $argv[1];
-$payload = $argv[2];
+$eventName = isset($argv[1]) ? $argv[1] : "";
+$payload = isset($argv[2]) ? $argv[2] : "";
 
 logEntry( "Event Name: " . $eventName . "  Payload: " . $payload);
 
 if (strlen($eventName) == 0){
-	throw new Exception('No event specified.');
+	logEntry("No event specified, nothing sent.");
+	exit(1);
 }
 
 if (strlen($payload) == 0){
-	throw new Exception('No payload specified.');
+	logEntry("No payload specified, nothing sent.");
+	exit(1);
 }
 
-$iftttKey = urldecode($pluginSettings['ifttt_key']);
+$iftttKey = urldecode(isset($pluginSettings['ifttt_key']) ? $pluginSettings['ifttt_key'] : "");
 
-$isConfigured = false;
-if (strlen($pluginSettings['ifttt_key']) > 0)
-{
-	$isConfigured = true;
-}
-
-if ($isConfigured){
+if (strlen($iftttKey) > 0){
 	$payloads = getPayloadOptions();
 
 	$payloadUrl = "";
-	
+
 	foreach($payloads as $item) {
 		$name = $item['name'];
 		if ($name == $payload){
@@ -52,35 +48,47 @@ else{
 }
 
 function callEndpoint($event, $iftttKey, $payloadData){
-	$url = "https://maker.ifttt.com/trigger/".$event."/json/with/key/". $iftttKey;
-	logEntry( "Webhook URL: " . $url);
+	// The key is part of IFTTT's URL, so the URL itself is never logged.
+	$url = "https://maker.ifttt.com/trigger/" . rawurlencode($event) . "/json/with/key/" . rawurlencode($iftttKey);
+	logEntry( "Sending event '" . $event . "' to maker.ifttt.com");
 
+	// fppd waits for this script to exit before the command completes, so
+	// don't let a slow or unreachable IFTTT hold it up for long.
 	$options = array(
-        'http' => array(
-        'method'  => 'GET'
-        )
-    );
+		'http' => array(
+			'method'        => 'GET',
+			'timeout'       => 10,
+			'ignore_errors' => true
+		)
+	);
 
 	if (strlen($payloadData) != 0){
-		$options = array(
-		'http' => array(
-			'method'  => 'POST',
-			'content' => $payloadData,
-			'header'=>  "Content-Type: application/json\r\n"
-			)
-		);
+		$options['http']['method'] = 'POST';
+		$options['http']['content'] = $payloadData;
+		$options['http']['header'] = "Content-Type: application/json\r\n";
 	}
+
 	$context = stream_context_create( $options );
-	$result = file_get_contents( $url, false, $context );
-	$response = $result;
-	$response_code = $http_response_header[0];
-	logEntry( "Webhook Response Code: " . $response_code);
-	logEntry( "Webhook Response: " . $response);
+	$result = @file_get_contents( $url, false, $context );
+
+	if ($result === false || !isset($http_response_header) || count($http_response_header) == 0){
+		$err = error_get_last();
+		logEntry( "Webhook request failed: " . ($err ? $err['message'] : "no response"));
+		return;
+	}
+
+	logEntry( "Webhook Response Code: " . $http_response_header[0]);
+	logEntry( "Webhook Response: " . $result);
 }
 
 function getPayload($path) {
-    $result=file_get_contents("http://127.0.0.1".$path);
-    return $result;
+	$context = stream_context_create(array('http' => array('timeout' => 5)));
+	$result = @file_get_contents("http://127.0.0.1" . $path, false, $context);
+	if ($result === false){
+		logEntry("Could not read payload from " . $path . ", sending without payload");
+		return "";
+	}
+	return $result;
 }
 
 ?>

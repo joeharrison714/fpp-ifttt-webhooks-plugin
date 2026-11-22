@@ -2,7 +2,7 @@
 	"repoName": "fpp-ifttt-webhooks",
 	"name": "IFTTT Webhooks",
 	"author": "Joe Harrison (joeharrison714)",
-	"description": "This plugin allows you to trigger an IFTTT action from FPP. For example, trigger an action on SmartThings, Hubitat, Wyze device, Kasa, Hue, Twitter, etc.",
+	"description": "This plugin allows you to trigger an IFTTT action from FPP. For example, trigger an action on SmartThings, Hubitat, Wyze device, Kasa, Hue, Twitter, etc. When an IFTTT Webhook Trigger command runs, it sends the event name (and optionally FPP's status) to maker.ifttt.com.",
 	"homeURL": "https://github.com/joeharrison714/fpp-ifttt-webhooks-plugin",
 	"srcURL": "https://github.com/joeharrison714/fpp-ifttt-webhooks-plugin.git",
 	"bugURL": "https://github.com/joeharrison714/fpp-ifttt-webhooks-plugin/issues",
@@ -10,17 +10,37 @@
 	"versions": [
 		{
 			"minFPPVersion": "5.0",
+			"maxFPPVersion": "9.999",
+			"branch": "master",
+			"sha": ""
+		},
+		{
+			"minFPPVersion": "10.0",
 			"maxFPPVersion": "0",
 			"branch": "master",
-			"sha": "",
-			"dependencies": {
-			    "plugins": [
-				],
-			    "packages": [
-				],
-				"scripts": [
-				]
-			}
+			"sha": ""
 		}
-	]
+	],
+	"dependencies": {
+		"plugins": [],
+		"packages": [],
+		"scripts": []
+	},
+	"privacy": {
+		"summary": "When you run its command, it tells IFTTT the event name you chose and, if you pick one, your player's current status. Nothing is sent otherwise.",
+		"sends": [
+			{
+				"to": "maker.ifttt.com",
+				"what": "the event name, and optionally FPP's player or system status",
+				"why": "to trigger the IFTTT applet you set up",
+				"alwaysOn": false
+			}
+		],
+		"collects": [],
+		"sensors": [],
+		"remoteAccess": "none",
+		"systemChanges": [],
+		"closedCode": false,
+		"other": "IFTTT's webhook API requires your webhook key in the request URL (sent over HTTPS). IFTTT keeps its own activity history for your applets under its own privacy policy."
+	}
 }
